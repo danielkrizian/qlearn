@@ -1,0 +1,6 @@
+* Why learn q ?
+
+* Where is it useful?
+
+  - finance
+  - blockchain - trade processing platform [[https://kx.com/blog/kx-technology-integrated-into-innovative-blockchain-trade-processing-platform/][Cobalt DL: trade processing plaform]]
