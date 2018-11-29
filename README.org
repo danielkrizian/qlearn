@@ -9,7 +9,7 @@
       - column attributes optimise qsql queries
       - parallelisation built-in natively (functional programming)
       - clever optimisations and reuse of just ~50 primitives
-   - well-established, growing, well-paid, well-integrated with other tech
+  - well-established, growing, well-paid, well-integrated with other tech
 * Where is it useful?
 
   - finance
