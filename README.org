@@ -1,17 +1,77 @@
 * Why learn q ?
   - fast (/faster than Python or R/) and big data ready. Why?
-      - code lives right next to the data, so no transmission cost
-      - kdb+ is columnar DBMS, so optimal use of locality during full-table scans
-      - in-memory when real-time; historical on disk stored column-wise and sequential read (in 4,096 blocks)
-      - terse
-      - vector-based ops are very fast (SIMD, SSE, AVX512 ...) while loops can be avoided in most cases
-      - compact data structures optimised to use L1 and L2 caches
-      - column attributes optimise qsql queries
-      - parallelisation built-in natively (functional programming)
-      - clever optimisations and reuse of just ~50 primitives
+    - code lives right next to the data, so no transmission cost
+    - kdb+ is columnar DBMS, so optimal use of locality during full-table scans
+    - in-memory when real-time; historical on disk stored column-wise and sequential read (in 4,096 blocks)
+    - terse
+    - vector-based ops are very fast (SIMD, SSE, AVX512 ...) while loops can be avoided in most cases
+    - compact data structures optimised to use L1 and L2 caches
+    - column attributes optimise qsql queries
+    - parallelisation built-in natively (functional programming)
+    - clever optimisations and reuse of just ~50 primitives
   - well-established, growing, well-paid, well-integrated with other tech
+
+[[https://adtmag.com/articles/2019/04/11/~/media/ECG/adtmag/Images/2018/09/slashdata_languages.asxh][popular languages now]], [[https://www.youtube.com/watch?v=Og847HVwRSI][popular languages in time]], [[https://www.itjobswatch.co.uk/jobs/london/python.do][Python jobs in London]], [[https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition][FizzBuzz]],, [[https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch][Object-relational impendance mismatch]], [[https://www.google.com/search?q=time+series+database+popularity&rlz=1C1GCEA_enGB869GB869&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjK85f4vL3nAhWSLewKHRh_DjAQ_AUoAnoECA4QBA&biw=3072&bih=1626#imgrc=9ZZq0_6jIrtCXM][time series database popularity]], [[https://kx.com/blog/what-makes-time-series-database-kdb-so-fast/][tsdb benchmarks]], [[https://danluu.com/empirical-pl/][static typing no better than dynamic]], [[https://code.kx.com/v2/basics/datatypes/][q datatypes]], [[http://kparc.com/k.txt][few primitives]], [[https://code.kx.com/v2/ref/iterators/][iterators]], [[http://kparc.com/d.txt][qsql expressivity]],, [[https://www.linkedin.com/pulse/python-data-analysis-really-simple-ferenc-bodon-ph-d-/][simpler than Python]],  [[https://www.itjobswatch.co.uk/jobs/london/kdb.do][q salaries command 40% premium]]
+** forget OOP, why functional
+ [[https://medium.com/better-programming/object-oriented-programming-the-trillion-dollar-disaster-92a4b666c7c7][OOP: Trillion dollar disaster]]
+#+BEGIN_QUOTE
+Alan Kay:
+[[http://wiki.c2.com/?AlanKayOnMessaging][ I'm sorry that I long ago coined the term "objects" for this topic because it gets many people to focus on the lesser idea. The big idea is "messaging"]]
+#+END_QUOTE
+
+Alan Kay’s big idea was to have independent programs (cells) communicate by sending messages to each other. The state of the independent programs would never be shared with the outside world (encapsulation).
+That’s it. OOP was never intended to have things like inheritance, polymorphism, the “new” keyword, and the myriad of design patterns.
+
+#+BEGIN_QUOTE
+Dijkstra: "our intellectual powers are rather geared to master static relations and that our powers to visualize processes evolving in time are relatively poorly developed."
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+Torvalds: "I'm a huge proponent of designing your code around the data, rather than the other way around." "Bad programmers worry about the code. Good programmers worry about data structures and their relationships."
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+Joe Armstrong (Erlang): The problem with object-oriented languages is they’ve got all this implicit environment that they carry around with them. You wanted a banana but what you got was a gorilla holding the banana and the entire jungle.
+#+END_QUOTE
+- encourages promiscuous sharing of mutable state
+- non-deterministic: 2+2 or calculator.Add(2,2): dependencies of Calculator might change the result in subtle ways
+- complexity, with numerous design patterns
+- no theoretical foundation came out of proper research institution, like lambda calculus
+- human brains evolved to do things, not organize world into complex hierarchies of abstract objects
 * Where is it useful?
 
   - finance
   - blockchain - trade processing platform [[https://kx.com/blog/kx-technology-integrated-into-innovative-blockchain-trade-processing-platform/][Cobalt DL: trade processing plaform]]
   - any industry with real-time analytics or big data needs (recently IoT, manufacturing, retail, space, ...)
+* What's q/kdb+ ?
+functional, array, dynamic, static, turing complete; in-memory database with disk persistence; high level abstractions: C->k->q/qsql->kdb+; 350kb interpreter runtime, REPL, interactive
+
+#+BEGIN_SRC ditaa -i :exports results :file whatq.png :cmdline -s 0.8
+/-----
+| q/kdb+
+|
+   +--------+     +--------+     +--------+
+   |        |     |        |     |{s}     |
+   | Python +---->+   SQL  +---->+   DB   |
+   |        |     |        |     |        |
+   +--------+     +--------+     +--------+  |
+                                             |
+                                         ----/
+
+#+END_SRC
+
+#+RESULTS:
+[[file:whatq.png]]
+
+* Use cases
+1. data analysis (OLAP, prototyping):
+ [[https://www.amazon.co.uk/Machine-Learning-Data-Wiley-Finance/dp/1119404754/ref=sr_1_fkmr0_1?keywords=machine+learning+in+kdb&qid=1581069249&sr=8-1-fkmr0][machine learning in q]]
+[[https://github.com/psaris/funq/blob/master/ml.q][ml in 1000 lines]]
+1. streaming and CEP (atomic OLTP):
+    tick architecture
+2. batch big data: (batch OLTP/OLAP)):
+ [[https://tech.marksblogg.com/benchmarks.html][fastest CPU database]], [[https://tech.marksblogg.com/billion-nyc-taxi-kdb.html][1.1bn taxi rides]],
+#+RESULTS:
+[[file:comp.png]]
+* key takeaways
+use FP, versatile, productive time, impactful, worthwhile
