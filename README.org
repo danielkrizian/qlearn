@@ -1,14 +1,16 @@
 * Why learn q ?
   - fast (/faster than Python or R/) and big data ready. Why?
+    - prefers vectors over loops: vector-based ops are very fast (SIMD, SSE, AVX512 ...)
+    - prefers binary over text
+    - prefers mmap over stdio read/write
     - code lives right next to the data, so no transmission cost
     - kdb+ is columnar DBMS, so optimal use of locality during full-table scans
     - in-memory when real-time; historical on disk stored column-wise and sequential read (in 4,096 blocks)
     - terse
-    - vector-based ops are very fast (SIMD, SSE, AVX512 ...) while loops can be avoided in most cases
     - compact data structures optimised to use L1 and L2 caches
-    - column attributes optimise qsql queries
     - parallelisation built-in natively (functional programming)
     - clever optimisations and reuse of [[http://kparc.com/k.txt][just ~50 primitives]]
+    - column attributes optimise qsql queries
   - well-established, growing, well-paid, well-integrated with other tech
 
 
