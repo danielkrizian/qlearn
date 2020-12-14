@@ -6,7 +6,7 @@
     - code lives right next to the data, so no transmission cost
     - kdb+ is columnar DBMS, so optimal use of locality during full-table scans
     - in-memory when real-time; historical on disk stored column-wise and sequential read (in 4,096 blocks)
-    - terse
+    - terse, efficient, [[https://dl.acm.org/doi/10.1145/358896.358899][Turing Award winning]] notation with strong theoretical foundation
     - compact data structures optimised to use L1 and L2 caches
     - parallelisation built-in natively (functional programming)
     - clever optimisations and reuse of [[http://kparc.com/k.txt][just ~50 primitives]]
@@ -29,6 +29,7 @@ By relieving the brain of all unnecessary work, a good notation sets it free to 
 The quantity of meaning compressed into small space by algebraic signs, is another circumstance that facilitates the reasonings we are accustomed to carry on by their aid.                     -- Charles Babbage
 #+END_QUOTE
 
+At Harvard, [[https://en.wikipedia.org/wiki/Kenneth_E._Iverson][Kenneth E. Iverson]] devised a mathematical notation for his work with economist Wassily Leontieff. Leontieff’s work won him the Nobel Prize. Iverson’s notation [[https://dl.acm.org/doi/10.1145/358896.358899][won him the Turing Award]]. It is the foundation of the programming languages APL, A+, J, k, and q. If Python is a bustling bazaar, q is a cathedral. Unlike Python, q is rooted in a strong theoretical foundation.
 
 ** forget OOP, why functional
  [[https://medium.com/better-programming/object-oriented-programming-the-trillion-dollar-disaster-92a4b666c7c7][OOP: Trillion dollar disaster]],
