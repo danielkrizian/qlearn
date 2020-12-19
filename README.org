@@ -31,6 +31,16 @@ The quantity of meaning compressed into small space by algebraic signs, is anoth
 
 At Harvard, [[https://en.wikipedia.org/wiki/Kenneth_E._Iverson][Kenneth E. Iverson]] devised a mathematical notation for his work with economist Wassily Leontieff. Leontieff’s work won him the Nobel Prize. Iverson’s notation [[https://dl.acm.org/doi/10.1145/358896.358899][won him the Turing Award]]. It is the foundation of the programming languages APL, A+, J, k, and q. If Python is a bustling bazaar, q is a cathedral. Unlike Python, q is rooted in a strong theoretical foundation.
 
+**** why is it so fast
+By far the biggest selling point for kdb+ is its speed. Kdb+ is a column oriented database, which means that, unlike most databases where rows of data are stored together, data in kdb + is stored by column. Each column is stored in contiguous memory, both in-process and on-disk, allowing computations across columns to be performed with astonishing speed. 
+
+When the results of a vector operation are then used as the inputs of the next operation, all the data stored in the CPU's memory cache can be accessed immediately without needing to search in the slower/ larger caches or even the slowest and largest memory store located on the motherboard. 
+
+In addition, modern CPUs provide custom interfaces to accelerate vector processing. Kdb + takes full advantage of these optimizations to achieve optimal performance. 
+
+Saving data in columns instead of rows also allows each column to be mapped in and out of memory when needed, thus reducing the need for all data to be loaded simultaneously. 
+
+All updates in kdb + are performed in a single thread. This removes the need for any resource locking, and thus provides another speed enhancement.
 ** forget OOP, why functional
  [[https://medium.com/better-programming/object-oriented-programming-the-trillion-dollar-disaster-92a4b666c7c7][OOP: Trillion dollar disaster]],
  [[https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch][Object-relational impendance mismatch]]
